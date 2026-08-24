@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expert whole home renovations in Sydney, NSW. From cosmetic updates to structural rebuilds and heritage restorations. Fixed-price quotes, NSW licensed, 5-year guarantee.">
+    <title>Whole Home Renovations Sydney | Sydney Home Renovation</title>
+    
+    <style>
+        /* =========================================
+           CSS VARIABLES & RESET (Shared Design System)
+           ========================================= */
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #d97706;
+            --accent-hover: #b45309;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.6; color: var(--text); background-color: var(--white); }
+        h1, h2, h3, h4 { color: var(--primary); line-height: 1.2; margin-bottom: 1rem; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; height: auto; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        
+        .btn { display: inline-block; padding: 0.875rem 1.75rem; background-color: var(--accent); color: var(--white); font-weight: 600; border-radius: var(--radius); border: none; cursor: pointer; transition: var(--transition); text-align: center; }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary); }
+        .section-padding { padding: 5rem 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+        .section-title { font-size: 2.25rem; margin-bottom: 1rem; position: relative; display: inline-block; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background-color: var(--accent); margin: 0.5rem auto 0; border-radius: 2px; }
+        .section-subtitle { color: var(--text-light); font-size: 1.125rem; max-width: 800px; margin: 0 auto 3rem; }
+
+        /* =========================================
+           HEADER & NAV
+           ========================================= */
+        .top-bar { background-color: var(--primary); color: var(--white); padding: 0.5rem 0; font-size: 0.875rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar a { color: var(--white); margin-left: 1.5rem; }
+        .top-bar a:hover { color: var(--accent); }
+        
+        header { background-color: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { font-weight: 600; color: var(--primary); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        
+        .dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background-color: var(--white); box-shadow: var(--shadow-lg); border-radius: var(--radius); min-width: 240px; list-style: none; padding: 0.5rem 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); z-index: 1001; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 0.75rem 1.25rem; font-size: 0.9rem; font-weight: 500; }
+        .dropdown-menu li a:hover { background-color: var(--bg-light); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+
+        /* =========================================
+           SERVICE HERO SECTION
+           ========================================= */
+        .service-hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 5rem 0;
+        }
+        .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+        .hero-text h1 { font-size: 2.75rem; color: var(--white); margin-bottom: 1rem; }
+        .hero-text .tagline { font-size: 1.125rem; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase; }
+        .hero-text p { font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9; }
+        .hero-badges { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .hero-badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+        .hero-badge svg { width: 20px; height: 20px; color: var(--accent); }
+
+        .lead-form { background-color: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow-lg); color: var(--text); }
+        .lead-form h3 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .lead-form p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.375rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: var(--radius); font-family: inherit; font-size: 0.95rem; transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        /* =========================================
+           TRUST BAR
+           ========================================= */
+        .trust-bar { background-color: var(--primary); color: var(--white); padding: 2rem 0; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center; }
+        .trust-item h4 { color: var(--accent); font-size: 1.75rem; margin-bottom: 0.25rem; }
+        .trust-item p { font-size: 0.875rem; opacity: 0.9; font-weight: 500; }
+
+        /* =========================================
+           CONTENT SECTIONS
+           ========================================= */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .content-text h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .content-text p { margin-bottom: 1.5rem; color: var(--text-light); }
+        .content-image { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+        
+        .signs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .sign-card { background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 4px solid var(--accent); }
+        .sign-card h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .sign-card p { color: var(--text-light); font-size: 0.95rem; }
+
+        /* Service Sub-types */
+        .service-types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .service-type-card { background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); transition: var(--transition); }
+        .service-type-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .service-type-card h3 { color: var(--accent); margin-bottom: 1rem; }
+        .service-type-card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; counter-reset: process-counter; }
+        .process-step { position: relative; padding: 2rem; background-color: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); counter-increment: process-counter; }
+        .process-step::before { content: counter(process-counter); position: absolute; top: -15px; left: 2rem; width: 40px; height: 40px; background-color: var(--accent); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; }
+        .process-step h3 { margin-top: 1rem; font-size: 1.1rem; }
+        .process-step p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Features / Why Choose Us */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature-item { display: flex; gap: 1rem; }
+        .feature-icon { flex-shrink: 0; width: 40px; height: 40px; background-color: var(--primary); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .feature-text h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .feature-text p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Pricing Section */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .pricing-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+        .pricing-header { background-color: var(--primary); color: var(--white); padding: 1.5rem; text-align: center; }
+        .pricing-header h3 { color: var(--white); margin-bottom: 0.5rem; font-size: 1.25rem; }
+        .pricing-header .price { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        .pricing-body { padding: 2rem; flex-grow: 1; }
+        .pricing-body ul { list-style: none; }
+        .pricing-body li { padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; color: var(--text-light); font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+        .pricing-body li svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+
+        /* Reviews */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .review-card { background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; }
+        .review-card::before { content: '"'; position: absolute; top: 1rem; right: 1.5rem; font-size: 4rem; color: #e2e8f0; font-family: serif; line-height: 1; }
+        .stars { color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem; }
+        .review-text { font-style: italic; color: var(--text); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        .reviewer { font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+        .reviewer span { display: block; font-weight: 400; color: var(--text-light); font-size: 0.85rem; margin-top: 0.25rem; }
+
+        /* Guarantee Badges */
+        .guarantee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center; }
+        .guarantee-item { padding: 2rem; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .guarantee-item svg { width: 48px; height: 48px; color: var(--accent); margin-bottom: 1rem; }
+        .guarantee-item h4 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .guarantee-item p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* FAQ */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background-color: var(--white); border-radius: var(--radius); margin-bottom: 1rem; box-shadow: var(--shadow); overflow: hidden; }
+        .faq-question { width: 100%; padding: 1.25rem; background: none; border: none; text-align: left; font-size: 1.05rem; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+        .faq-question:hover { background-color: var(--bg-light); }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent); transition: var(--transition); }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 1.25rem; }
+        .faq-item.active .faq-answer { max-height: 500px; padding-bottom: 1.25rem; }
+        .faq-answer p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+        /* CTA Section */
+        .cta-section { background-color: var(--primary); color: var(--white); text-align: center; }
+        .cta-section h2 { color: var(--white); font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.125rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Footer */
+        footer { background-color: var(--primary-light); color: #94a3b8; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: var(--white); font-size: 1.125rem; margin-bottom: 1.5rem; position: relative; padding-bottom: 0.75rem; }
+        .footer-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background-color: var(--accent); }
+        .footer-col p { margin-bottom: 1rem; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { font-size: 0.9rem; transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--accent); padding-left: 5px; }
+        .contact-info li { display: flex; gap: 0.75rem; align-items: flex-start; }
+        .contact-info svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
+        .footer-bottom { border-top: 1px solid #334155; padding-top: 2rem; text-align: center; font-size: 0.875rem; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content, .content-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links { position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); background-color: var(--white); flex-direction: column; padding: 2rem; transition: var(--transition); gap: 1.5rem; overflow-y: auto; }
+            .nav-links.active { left: 0; }
+            .dropdown-menu { position: static; box-shadow: none; opacity: 1; visibility: visible; transform: none; padding-left: 1rem; display: none; }
+            .dropdown.active .dropdown-menu { display: block; }
+            .hero-text h1 { font-size: 2.25rem; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <span>Serving Greater Sydney Since 2001 | Licensed & Insured</span>
+            <div>
+                <a href="tel:+61290721905">📞 +61 2 9072 1905</a>
+                <a href="mailto:support@sydneyhomerenovation.com.au">✉️ support@sydneyhomerenovation.com.au</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">Sydney<span>HomeRenovation</span></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li class="dropdown" id="servicesDropdown">
+                        <a href="/#services" class="active">Services ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="active">Whole Home Renovations</a></li>
+                            <li><a href="/#home-extensions">Home Extensions</a></li>
+                            <li><a href="/#granny-flats">Granny Flats</a></li>
+                            <li><a href="/#bathroom">Bathroom Renovations</a></li>
+                            <li><a href="/#kitchen">Kitchen Renovations</a></li>
+                            <li><a href="/#laundry">Laundry Renovations</a></li>
+                            <li><a href="/#second-storey">Second Storey Additions</a></li>
+                            <li><a href="/#office">Office Renovations</a></li>
+                            <li><a href="/#restaurant">Restaurant Renovations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/#process">Our Process</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="tagline">Trust & Local Expertise</p>
+                    <h1>Whole Home Renovation in Sydney, NSW</h1>
+                    <p>Sydney’s trusted whole home renovation specialists – delivering beautiful, functional spaces that reflect your vision, lifestyle, and personality. One contract, one project manager, zero stress.</p>
+                    <div class="hero-badges">
+                        <div class="hero-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            25+ Years in Sydney
+                        </div>
+                        <div class="hero-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            NSW Licensed Builder
+                        </div>
+                        <div class="hero-badge">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            5-Year Guarantee
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lead-form">
+                    <h3>Get a Quick Response</h3>
+                    <p>We'll get back to you within 30 minutes or less!</p>
+                    <form id="quoteForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service *</label>
+                            <select id="service" name="service" required>
+                                <option value="whole-home" selected>Whole Home Renovations</option>
+                                <option value="home-extensions">Home Extensions</option>
+                                <option value="granny-flats">Granny Flats</option>
+                                <option value="bathroom">Bathroom Renovation</option>
+                                <option value="kitchen">Kitchen Renovation</option>
+                                <option value="laundry">Laundry Renovation</option>
+                                <option value="second-storey">Second Storey Additions</option>
+                                <option value="office">Office Renovation</option>
+                                <option value="restaurant">Restaurant Renovation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Request Free Quote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <h4>25 Years</h4>
+                    <p>In Business</p>
+                </div>
+                <div class="trust-item">
+                    <h4>$20M</h4>
+                    <p>Fully Insured</p>
+                </div>
+                <div class="trust-item">
+                    <h4>NSW</h4>
+                    <p>Licensed Builder</p>
+                </div>
+                <div class="trust-item">
+                    <h4>100%</h4>
+                    <p>Workmanship Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <h2>Transform Your Sydney Home - Complete Renovation Solutions</h2>
+                    <p>Your home should work for the life you’re living right now, not the one it was built for decades ago. If you’re navigating cramped rooms, outdated kitchens, ageing electrical systems, or a layout that simply doesn’t flow, you already know that patching individual problems isn’t the answer.</p>
+                    <p>A <strong><a href="https://sydneyhomerenovation.com.au/services/whole-home-renovations/">whole home renovation</a></strong> addresses everything at once, delivering a cohesive result that partial upgrades never can. From Federation cottages in the Inner West to post-war brick homes in Western Sydney, our team manages every phase of your renovation: design, approvals, construction, and handover, under one roof, with one contract, and one dedicated project manager by your side.</p>
+                    <p>Our NSW Builder’s Licence, fixed-price quoting, and 5-year workmanship guarantee mean you know exactly what you’re getting before a single wall comes down.</p>
+                    <a href="#contact" class="btn">Book a Free Site Assessment</a>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Modern whole home renovation in Sydney">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signs You Need It -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Signs Your Sydney Home Is Ready for a Full Renovation</h2>
+                <p class="section-subtitle">Forget about spending thousands on temporary fixes that don't address the root cause. A comprehensive renovation solves underlying issues and adds significant value.</p>
+            </div>
+            <div class="signs-grid">
+                <div class="sign-card">
+                    <h3>Your Layout No Longer Suits How You Live</h3>
+                    <p>Sydney homes built before the 1990s were designed around very different lifestyles: formal dining rooms, closed-off kitchens, and minimal storage. If your family has grown or your work-from-home needs have changed, a whole home renovation can reconfigure your space entirely.</p>
+                </div>
+                <div class="sign-card">
+                    <h3>Ageing Systems Are Costing You Money</h3>
+                    <p>Older Sydney properties frequently carry original electrical wiring, galvanised steel plumbing, and roofing that has long exceeded its service life. Addressing electrical, plumbing, and structural elements together avoids the disruption and cost of repeated partial works.</p>
+                </div>
+                <div class="sign-card">
+                    <h3>You've Outgrown Partial Fixes</h3>
+                    <p>If you've already renovated the kitchen, but the bathroom still feels like 1985, or you've repainted throughout but the bones of the home still feel tired, a whole home approach delivers better long-term value and a truly cohesive result.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Types -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our Whole Home Renovation Services</h2>
+                <p class="section-subtitle">Tailored solutions that add value to your home and make the remodeling project as smooth as possible.</p>
+            </div>
+            <div class="service-types-grid">
+                <div class="service-type-card">
+                    <h3>Cosmetic Renovation</h3>
+                    <p>Updates the look and feel without structural changes. Includes new flooring, fresh painting, updated lighting, new cabinetry, and modernised wet areas. Ideal for properties with sound bones needing a contemporary refresh. Typically completed within 8–14 weeks.</p>
+                </div>
+                <div class="service-type-card">
+                    <h3>Structural Renovation</h3>
+                    <p>Goes beyond finishes to reconfigure the layout. Includes removing or relocating walls, opening up living areas, and modifying rooflines. We manage the entire DA or CDC council approval process on your behalf for a seamless experience.</p>
+                </div>
+                <div class="service-type-card">
+                    <h3>Full Gut & Rebuild</h3>
+                    <p>For properties with significant deterioration or layouts that cannot be improved without starting fresh. We strip the home back to its frame and rebuild from the inside out, modernising all systems while retaining the original footprint.</p>
+                </div>
+                <div class="service-type-card">
+                    <h3>Heritage & Federation</h3>
+                    <p>Specialist approach respecting heritage character while delivering modern functionality. Extensive experience navigating heritage overlays and specific construction techniques required for period homes in suburbs like Balmain, Leichhardt, and Glebe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section-padding bg-light" id="process">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">How Our Process Works</h2>
+                <p class="section-subtitle">Refined over 25 years to be as clear, predictable, and stress-free as possible.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <h3>Free Consultation & Assessment</h3>
+                    <p>We walk through your home, listen to your goals, and assess the current condition. You’ll leave with a clear sense of what’s possible and a realistic picture of scope and timeline.</p>
+                </div>
+                <div class="process-step">
+                    <h3>Design & Fixed-Price Quote</h3>
+                    <p>Once the design is confirmed, you receive a fully itemised, fixed-price quote covering every trade, material, and contingency. No vague allowances or hidden line items.</p>
+                </div>
+                <div class="process-step">
+                    <h3>Council Approvals</h3>
+                    <p>For renovations requiring a DA or CDC, our team prepares and lodges all documentation. We manage the approval process and keep you informed at every stage.</p>
+                </div>
+                <div class="process-step">
+                    <h3>Construction & Handover</h3>
+                    <p>Licensed trades work to a structured programme with weekly updates. At completion, we conduct a thorough walkthrough and hand over a fully documented project file with your 5-year guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Why Sydney Homeowners Choose Us</h2>
+                <p class="section-subtitle">There’s no shortage of renovation companies in Sydney. Here’s why our clients keep coming back and refer their neighbours.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>One Team, Zero Headaches</h4>
+                        <p>One project manager handles demolition, framing, plumbing, electrical, and finishing. You make one call and receive one update.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>Fixed-Price Quotes</h4>
+                        <p>No budget surprises. Every quote is itemised, fixed-price, and comprehensive. If we've quoted it, it's covered.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>NSW Licensed & Compliant</h4>
+                        <p>Active NSW Builder's Licence. All work meets NSW Building Code requirements and relevant Australian Standards.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>5-Year Workmanship Guarantee</h4>
+                        <p>Backed by a 5-year written guarantee. If any defect attributable to our work appears, we rectify it at no charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">What Does a Whole Home Renovation Cost?</h2>
+                <p class="section-subtitle">Pricing varies based on scope, condition, and size. We believe you deserve a clear picture before you call anyone.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Cosmetic Renovation</h3>
+                        <div class="price">$80,000 – $150,000</div>
+                        <small>Typical 3-Bedroom Home</small>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> New flooring throughout</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Internal & external painting</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Updated lighting & fixtures</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Modernised wet areas</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> No structural changes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Structural Renovation</h3>
+                        <div class="price">$150,000 – $250,000</div>
+                        <small>Typical 3-Bedroom Home</small>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Wall removal & relocation</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Open-plan living creation</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Bathroom additions/relocations</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> DA or CDC management included</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Structural engineering</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Full Gut & Rebuild</h3>
+                        <div class="price">$200,000 – $350,000+</div>
+                        <small>Complete Transformation</small>
+                    </div>
+                    <div class="pricing-body">
+                        <ul>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Strip back to frame</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Complete electrical & plumbing</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> New insulation & HVAC</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Asbestos removal (if required)</li>
+                            <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Retains original footprint</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <p style="color: var(--text-light); margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto;">*These are indicative ranges only. Every Sydney home is different. The only way to get an accurate figure is a thorough site assessment.</p>
+                <a href="#contact" class="btn">Get My Free Renovation Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">What Sydney Homeowners Say</h2>
+                <p class="section-subtitle">Don’t take our word for it, hear from your neighbours.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"After getting three quotes from different Sydney builders, we chose Sydney Home Renovation because they were the only ones who gave us a genuinely fixed price. The renovation took 14 weeks exactly as scheduled, and the quality is outstanding."</p>
+                    <div class="reviewer">James & Priya T.<span>Leichhardt, NSW</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"We were nervous about the whole process; we'd heard so many renovation horror stories. From the first consultation to the final walkthrough, the team was professional, transparent, and genuinely easy to deal with. Our Federation home looks incredible."</p>
+                    <div class="reviewer">David K.<span>Balmain, NSW</span></div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"We bought a 1970s brick home in Strathfield that hadn't been touched in 30 years. They transformed it into a completely new layout. The project manager kept us informed every single week; the price never changed from the original quote."</p>
+                    <div class="reviewer">Sarah M.<span>Strathfield, NSW</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Licensed, Certified, and Guaranteed</h2>
+                <p class="section-subtitle">Your peace of mind is our highest priority.</p>
+            </div>
+            <div class="guarantee-grid">
+                <div class="guarantee-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <h4>NSW Builder's Licence</h4>
+                    <p>Active NSW Contractor Licence issued by NSW Fair Trading. All work performed to NSW Building Code standards.</p>
+                </div>
+                <div class="guarantee-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <h4>Fully Insured</h4>
+                    <p>$20M public liability insurance, $5M professional indemnity, and full workers' compensation coverage.</p>
+                </div>
+                <div class="guarantee-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <h4>5-Year Guarantee</h4>
+                    <p>Every project is backed by a 5-year written workmanship guarantee, fully transferable on property sale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding" id="faq">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Common Questions About Whole Home Renovation</h2>
+                <p class="section-subtitle">Got questions? We've got answers.</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">How much does a whole home renovation cost in Sydney?</button>
+                    <div class="faq-answer">
+                        <p>Costs typically range from $80,000 for a cosmetic renovation of a 3-bedroom home to $350,000+ for a full gut renovation of a larger property. Key factors include scope, property condition, finish selections, and council approval requirements. We provide detailed, fixed-price quotes after a site assessment.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How long does a whole home renovation take?</button>
+                    <div class="faq-answer">
+                        <p>A cosmetic whole home renovation typically takes 8–14 weeks. A structural renovation with council approval can take 20–36 weeks from consultation to handover, including the approval period. We provide a detailed construction programme before work begins.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do I need council approval for a whole home renovation?</button>
+                    <div class="faq-answer">
+                        <p>It depends on the scope. Cosmetic renovations generally don't require approval. Structural changes such as wall removal, layout reconfiguration, or alterations to the building envelope typically require either a Development Application (DA) or a Complying Development Certificate (CDC). We manage the entire process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Will we need to move out during the renovation?</button>
+                    <div class="faq-answer">
+                        <p>For full gut and structural renovations, moving out is strongly recommended and often necessary for safety and practical reasons. For cosmetic renovations, it may be possible to remain in the home with some disruption. We help you plan accordingly during the consultation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">How do I avoid budget blowouts?</button>
+                    <div class="faq-answer">
+                        <p>The most effective protection is a detailed, fixed-price contract from a licensed builder. Avoid builders who quote rough estimates or use large provisional sums. At Sydney Home Renovation, every quote is itemised and fixed; if we've quoted it, it's covered.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-padding cta-section" id="contact">
+        <div class="container">
+            <h2>Get Your Free Whole Home Renovation Quote Today</h2>
+            <p>Whether you’re ready to start or still in the research phase, the best next step is a free, no-obligation site assessment. We’ll visit your property, walk you through your options, and give you a clear picture of what’s possible.</p>
+            <a href="tel:+61290721905" class="btn btn-outline" style="margin-right: 1rem;">Call 02 9072 1905</a>
+            <a href="#quoteForm" class="btn">Request Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Sydney Home Renovation</h4>
+                    <p>Sydney's trusted renovation experts since 2001. We deliver quality, creativity, and peace of mind for residential and commercial projects across Greater Sydney.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/whole-home-renovations/">Whole Home Renovations</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/kitchen-renovations/">Kitchen Renovations</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/bathroom-renovations/">Bathroom Renovations</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/home-extensions/">Home Extensions</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/second-storey-additions/">Second Storey Additions</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/granny-flats/">Granny Flats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Commercial</h4>
+                    <ul>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/office-renovations/">Office Renovations</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/restaurant-renovations/">Restaurant Renovations</a></li>
+                        <li><a href="https://sydneyhomerenovation.com.au/services/laundry-renovations/">Laundry Renovations</a></li>
+                        <li><a href="/#process">Our Process</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span>+61 2 9072 1905</span>
+                        </li>
+                        <li>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>support@sydneyhomerenovation.com.au</span>
+                        </li>
+                        
